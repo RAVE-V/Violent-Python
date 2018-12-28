@@ -1,0 +1,18 @@
+Your account information:
+SSH Premium Canada
+IP Address: ca01.ipssh.xyz
+Username: qwertyqw-readyssh
+Password: qwerty1234
+OpenSSH: 22, 143
+Dropbear: 80, 443
+Squid: 3128, 8080
+Exp: 2018-12-31
+
+User qwerty12-freevpn.us created successfully!!!!!
+Username: qwerty12-freevpn.us
+Password: qwerty1234
+Ip Address: s8.sshservers.us (Host To IP)
+Dropbear: 443
+OpenSSH: 22
+Squid: 80, 3128
+Exp: 02-01-2019
