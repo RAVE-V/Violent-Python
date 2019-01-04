@@ -28,11 +28,14 @@ def add_client(host,user,password):
     botNet.append(client)
 
 def botnetCommand(command):
-    for client in botNet:
-        out=client.send_command(command)
-        print('[*] Output from '+client.host)
-        print('[+] '+output+'\n')
-
+    try:
+        for client in botNet:
+            out=client.send_command(command)
+            print('[*] Output from '+client.host)
+            print('[+] '+output+'\n')
+    except Exception,e:
+        print (e)
+        
 botNet=[]
 add_client('s3.sshservers.us','data-freevpn.us','pass')
 botnetCommand('uname -v')
