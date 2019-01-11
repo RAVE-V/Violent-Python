@@ -18,7 +18,7 @@ def Brute(hostname,passFile):
     return (None,None)
 
 
-host='test.rebex.net'
+host='test.rebex.ne'
 passFile='pass.txt'
 r=Brute(host,passFile)
 print(r)
