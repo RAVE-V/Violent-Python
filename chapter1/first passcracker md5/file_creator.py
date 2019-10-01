@@ -1,4 +1,6 @@
+#import libraries
 import crypt
+#loop statements
 for i in range(10):
         f=raw_input("Enter u:")
         s=raw_input("Enter salt:")
